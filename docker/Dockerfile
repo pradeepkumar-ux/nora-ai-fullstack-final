@@ -1,4 +1,9 @@
+FROM maven:3.9.4-eclipse-temurin-17 as builder
+WORKDIR /app
+COPY . .
+RUN mvn clean package -DskipTests
+
 FROM openjdk:17-jdk-slim
-VOLUME /tmp
-COPY target/nora-ai-backend-1.0.jar app.jar
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+WORKDIR /app
+COPY --from=builder /app/target/*.jar app.jar
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
