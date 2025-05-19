@@ -1,8 +1,10 @@
 package com.noraai.model;
+import lombok.Data;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
+@Data
 @Entity
 public class InterviewSession {
     @Id
