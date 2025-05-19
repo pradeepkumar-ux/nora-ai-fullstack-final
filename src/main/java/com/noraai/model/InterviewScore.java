@@ -1,7 +1,9 @@
 package com.noraai.model;
+import lombok.Data;
 
 import jakarta.persistence.*;
 
+@Data
 @Entity
 public class InterviewScore {
     @Id
